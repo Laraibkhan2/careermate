@@ -1,0 +1,18 @@
+const allSkills = [
+  'React',
+  'Node.js',
+  'SQL',
+  'Python',
+  'JavaScript',
+  'TypeScript',
+  'Docker',
+  'AWS',
+  'Figma',
+  'Java',
+  'Git',
+  'Flutter',
+  'Dart',
+  'Firebase',
+  'REST APIs',
+  'HTML & CSS',
+];

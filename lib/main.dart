@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'utils/app_colors.dart';
-import 'view/screens/auth/login_screen.dart';
+import 'view/screens/onboarding/onboarding_screen.dart';
 
 void main() => runApp(const CareerMateApp());
 
@@ -30,6 +30,6 @@ class CareerMateApp extends StatelessWidget {
         ),
       ),
     ),
-    home: const LoginScreen(),
+    home: const OnboardingScreen(),
   );
 }

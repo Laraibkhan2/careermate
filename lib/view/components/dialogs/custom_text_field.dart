@@ -106,7 +106,6 @@ class CustomTextField extends StatelessWidget {
   }
 }
 
-/// Keeps the show/hide state of one password field.
 class _ObscureController extends GetxController {
   bool obscure = true;
 

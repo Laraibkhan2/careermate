@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:careermate/utils/app_colors.dart';
+
+import '../../utils/app_colors.dart';
+import 'screen_header.dart';
+
+/// Shared page shell for Login, Create Account and Forgot Password:
+/// icon, title, subtitle, the form fields and the bottom link.
 class AuthLayout extends StatelessWidget {
   const AuthLayout({
     super.key,
@@ -48,28 +53,7 @@ class AuthLayout extends StatelessWidget {
                     ),
                     child: Icon(icon, size: 30, color: AppColors.primary),
                   ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 8,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    Text(
-                      subtitle,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        height: 1.4,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
+                ScreenHeader(title: title, subtitle: subtitle),
                 ...children,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
