@@ -16,15 +16,24 @@ class OnboardingController extends GetxController {
     update();
   }
 
+  /// Moves [step] pages forward (1) or back (-1). Does nothing at the ends.
+  void go(int step) {
+    final target =
+        (currentPage + step).clamp(0, onboardingPages.length - 1).toInt();
+    if (target == currentPage) return;
+    pageController.animateToPage(
+      target,
+      duration: const Duration(milliseconds: 450),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
   /// "Next" goes to the following page; on the last page it finishes.
   void next() {
     if (isLast) {
       finish();
     } else {
-      pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+      go(1);
     }
   }
 

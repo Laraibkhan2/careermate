@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.next,
     this.validator,
     this.onSubmitted,
+    this.maxLines = 1,
   });
 
   final String label;
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final String? Function(String?)? validator;
   final ValueChanged<String>? onSubmitted;
+  final int maxLines;
 
   OutlineInputBorder _border(Color color) => OutlineInputBorder(
     borderRadius: BorderRadius.circular(14),
@@ -37,6 +39,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscure,
+      maxLines: obscure ? 1 : maxLines,
       enableSuggestions: !isPassword,
       autocorrect: !isPassword,
       keyboardType: keyboardType,
@@ -106,6 +109,7 @@ class CustomTextField extends StatelessWidget {
   }
 }
 
+/// Keeps the show/hide state of one password field.
 class _ObscureController extends GetxController {
   bool obscure = true;
 

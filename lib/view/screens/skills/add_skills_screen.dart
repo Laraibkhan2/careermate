@@ -56,21 +56,21 @@ class AddSkillsScreen extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: skills.isEmpty
                           ? const Text(
-                        'No matching skills',
-                        style: TextStyle(color: AppColors.textSecondary),
-                      )
+                              'No matching skills',
+                              style: TextStyle(color: AppColors.textSecondary),
+                            )
                           : Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: [
-                          for (final skill in skills)
-                            SkillChip(
-                              label: skill,
-                              isSelected: c.selected.contains(skill),
-                              onTap: () => c.toggle(skill),
+                              spacing: 10,
+                              runSpacing: 10,
+                              children: [
+                                for (final skill in skills)
+                                  SkillChip(
+                                    label: skill,
+                                    isSelected: c.selected.contains(skill),
+                                    onTap: () => c.toggle(skill),
+                                  ),
+                              ],
                             ),
-                        ],
-                      ),
                     ),
                   ),
                   CustomButton(

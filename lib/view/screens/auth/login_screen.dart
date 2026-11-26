@@ -24,6 +24,7 @@ class LoginScreen extends StatelessWidget {
         footerText: 'New to CareerMate?',
         footerLink: 'Create account',
         onFooterTap: () => Get.to(() => const CreateAccountScreen()),
+        onGoogleTap: c.continueWithGoogle,
         children: [
           CustomTextField(
             label: 'Email',

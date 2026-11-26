@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../model/skills.dart';
+import '../view/screens/main/main_screen.dart';
+import 'user_controller.dart';
 
 class AddSkillsController extends GetxController {
   static const _maxSkillLength = 30;
@@ -24,7 +26,7 @@ class AddSkillsController extends GetxController {
   /// True when the typed text is not already in the list, so it can be added.
   bool get canAddCustom =>
       query.isNotEmpty &&
-          !_allSkills.any((s) => s.toLowerCase() == query.toLowerCase());
+      !_allSkills.any((s) => s.toLowerCase() == query.toLowerCase());
 
   void toggle(String skill) {
     if (!selected.remove(skill)) selected.add(skill);
@@ -53,9 +55,8 @@ class AddSkillsController extends GetxController {
     isLoading = true;
     update();
     try {
-      // TODO: save `selected` (includes custom skills) with the API,
-      // then open the Home screen.
-      await Future<void>.delayed(const Duration(seconds: 1));
+      await Get.find<UserController>().setSkills(selected.toList());
+      Get.offAll(() => const MainScreen());
     } finally {
       isLoading = false;
       update();
@@ -65,6 +66,10 @@ class AddSkillsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // Show the skills the user already has (when opened from Profile).
+    final mine = Get.find<UserController>().skills;
+    selected.addAll(mine);
+    customSkills.addAll(mine.where((s) => !allSkills.contains(s)));
     search.addListener(update);
   }
 

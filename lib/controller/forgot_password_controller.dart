@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../services/auth_service.dart';
 import 'auth_form_controller.dart';
 
 class ForgotPasswordController extends AuthFormController {
@@ -7,7 +9,9 @@ class ForgotPasswordController extends AuthFormController {
 
   @override
   Future<void> onSubmit() async {
-    await Future<void>.delayed(const Duration(seconds: 1));
+    await AuthService.sendPasswordReset(email.text);
+    Get.back();
+    Get.snackbar('Check your email', 'We sent you a link to reset your password.');
   }
 
   @override

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../view/screens/main_screen/add_skills_screen.dart';
+import '../services/auth_service.dart';
 import 'auth_form_controller.dart';
+import 'user_controller.dart';
 
 class LoginController extends AuthFormController {
   final email = TextEditingController();
@@ -10,10 +11,9 @@ class LoginController extends AuthFormController {
 
   @override
   Future<void> onSubmit() async {
-    // TODO: call the login API with email.text and password.text.
-    // Open the next screen only when the API says the login worked.
-    await Future<void>.delayed(const Duration(seconds: 1));
-    Get.offAll(() => const AddSkillsScreen());
+    await AuthService.signInWithEmail(email.text, password.text);
+    // Reads the user's role and opens the right first screen.
+    await Get.find<UserController>().goAfterAuth();
   }
 
   @override
